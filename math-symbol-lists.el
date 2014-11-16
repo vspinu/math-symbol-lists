@@ -1,9 +1,9 @@
-;;; symbols.el --- Lists of Unicode mathematical symbols and latex commands
+;;; math-symbol-lists.el --- Lists of Unicode mathematical symbols and latex commands
 ;;
 ;; Copyright (C) 2014, Vitalie Spinu
 ;; Author: Vitalie Spinu
-;; URL: https://github.com/vspinu/symbols.el
-;; Keywords: Unicode, symbols
+;; URL: https://github.com/vspinu/math-symbol-lists
+;; Keywords: Unicode, symbols, mathematics
 ;; Version: 1.0
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -43,7 +43,7 @@
 ;;; Code:
 
 ;;;###autoload
-(defconst symbols-math-basic
+(defconst math-symbol-list-basic
   '(("Greek Lowercase"	"\\alpha"	#X3B1)
     ("Greek Lowercase"	"\\beta"	#X3B2)
     ("Greek Lowercase"	"\\gamma"	#X3B3)
@@ -564,7 +564,7 @@
   "List of basic mathematical symbols.")
 
 ;;;###autoload
-(defconst symbols-math-extended
+(defconst math-symbol-list-extended
   '(("punct"	"\\exclam"	#X21)
     ("ord"	"\\octothorpe"	#X23)
     ("ord"	"\\mathdollar"	#X24)
@@ -3006,7 +3006,7 @@
   "Extended list of mathematical symbols")
 
 ;;;###autoload
-(defconst symbols-latex-commands
+(defconst math-symbol-list-latex-commands
   '("address" "addtocounter" "addtolength" "addvspace" "Alph" "alph" "Alph
     example" "alsoname" "and for author" "appendix" "arabic" "arraycolsep"
     "arrayrulewidth" "arraystretch" "baselineskip"
@@ -3065,4 +3065,4 @@
     "width" "year")
   "List of the latex commands.")
 
-(provide 'symbols)
+(provide 'math-symbol-lists)
