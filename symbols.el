@@ -1,11 +1,11 @@
 ;;; symbols.el --- Lists of Unicode mathematical symbols and latex commands
 ;;
-;; Copyright (C) 2011-2013, Vitalie Spinu
+;; Copyright (C) 2014, Vitalie Spinu
 ;; Author: Vitalie Spinu
-;; URL: https://github.com/vitoshka/ac-math
-;; Keywords: latex, auto-complete, Unicode, symbols
-;; Version: 1
-;; Package-Requires: ((auto-complete "1.4"))
+;; URL: https://github.com/vspinu/symbols.el
+;; Keywords: Unicode, symbols
+;; Version: 1.0
+;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; This file is *NOT* part of GNU Emacs.
@@ -42,6 +42,7 @@
 ;;
 ;;; Code:
 
+;;;###autoload
 (defconst symbols-math-basic
   '(("Greek Lowercase"	"\\alpha"	#X3B1)
     ("Greek Lowercase"	"\\beta"	#X3B2)
@@ -562,6 +563,7 @@
     ("AMS/Special"	"\\sideset"))
   "List of basic mathematical symbols.")
 
+;;;###autoload
 (defconst symbols-math-extended
   '(("punct"	"\\exclam"	#X21)
     ("ord"	"\\octothorpe"	#X23)
@@ -3003,16 +3005,17 @@
     ("ord"	"\\mttnine"	#X1D7FF))
   "Extended list of mathematical symbols")
 
+;;;###autoload
 (defconst symbols-latex-commands
   '("address" "addtocounter" "addtolength" "addvspace" "Alph" "alph" "Alph
     example" "alsoname" "and for author" "appendix" "arabic" "arraycolsep"
-    "arrayrulewidth" "arraystretch" "b" "baselineskip"
+    "arrayrulewidth" "arraystretch" "baselineskip"
     "baselinestretch" "begin" "bf" "bfseries" "bibitem" "bibliography"
     "bibliographystyle" "bigskip" "bigskipamount" "bmod" "boldmath"
-    "bottomfraction" "c " "cal" "caption" "cc" "centering"
+    "bottomfraction" "cal" "caption" "cc" "centering"
     "chapter" "circle" "cite" "cleardoublepage" "clearpage" "cline" "closing"
-    "columnsep" "columnseprule" "columnwidth" "contentsline" "copyright" "d
-    " "dag" "dashbox" "day" "dblfloatpagefraction"
+    "columnsep" "columnseprule" "columnwidth" "contentsline" "copyright"
+    "dag" "dashbox" "day" "dblfloatpagefraction"
     "dblfloatsep" "dbltextfloatsep" "dbltopfraction" "ddag" "depth"
     "displaystyle" "documentclass" "dotfill" "doublerulesep" "emph" "encl"
     "enlargethispage" "enumi" "enumii" "enumiii" "enumiv" "evensidemargin"
@@ -3020,11 +3023,11 @@
     "flushbottom" "fnsymbol" "fontencoding" "fontfamily" "fontseries"
     "fontshape" "fontsize" "footnote" "footnotemark" "footnoterule"
     "footnotesep" "footnotesize" "footnotetext" "footskip" "frame" "framebox"
-    "fussy" "gets" "glossary" "glossaryentry" "H "
+    "fussy" "gets" "glossary" "glossaryentry" 
     "headheight" "headsep" "height" "hfill" "hline" "hrulefill" "hspace"
     "Huge" "huge" "hyphenation" "iff" "include" "includeonly"
-    "indent" "index" "indexentry" "input" "intextsep" "it"
-    "item" "itemindent" "itemsep" "itshape" "j " "kill"
+    "indent" "index" "indexentry" "input" "intextsep"
+    "item" "itemindent" "itemsep" "itshape" "kill"
     "label" "labelenumi" "labelenumii" "labelenumiii" "labelenumiv"
     "labelitemi" "labelitemii" "labelitemiii" "labelitemiv" "labelsep"
     "labelwidth" "land" "LARGE" "Large" "large" "LaTeX" "le" "leadsto"
@@ -3039,29 +3042,27 @@
     "newcounter" "newenvironment" "newfont" "newlength" "NEWLINE" "newline"
     "newpage" "newsavebox" "newtheorem" "nocite" "nofiles" "noindent"
     "nolinebreak" "nonumber" "nopagebreak" "normalfont" "normalmarginpar"
-    "normalsize" "O " "oe
-    " "onecolumn" "opening" "oval" "owns" "P" "pagebreak" "pagenumbering"
+    "normalsize" "oe" "onecolumn" "opening" "oval" "owns" "P" "pagebreak" "pagenumbering"
     "pageref" "pagestyle" "paragraph" "parbox" "parindent"
     "parsep" "parskip" "parskip example" "part" "partopsep" "pmod" "poptabs"
     "pounds" "protect" "ps" "pushtabs" "put" "raggedbottom" "raggedleft"
     "raggedright" "raisebox" "ref" "refstepcounter" "renewenvironment"
     "restorecr" "reversemarginpar" "right" "rightmargin" "rm" "rmfamily"
-    "roman" "rq" "rule" "S" "savebox" "sbox" "sc" "scriptsize" "scshape"
+    "roman" "rq" "rule" "savebox" "sbox" "sc" "scriptsize" "scshape"
     "section" "seename" "selectfont" "setcounter" "setlength" "settodepth"
     "settoheight" "settowidth" "sf" "sffamily" "shortstack" "signature" "sl"
-    "slshape" "small" "smallint" "smallskip" "smallskipamount" "SPACE" "ss
-    " "startbreaks" "stepcounter" "stop" "stopbreaks" "subparagraph"
-    "subsection" "subsubsection" "symbol" "t " "TAB"
+    "slshape" "small" "smallint" "smallskip" "smallskipamount" "SPACE" "ss"
+    "startbreaks" "stepcounter" "stop" "stopbreaks" "subparagraph"
+    "subsection" "subsubsection" "symbol" "TAB"
     "tabbingsep" "tabcolsep" "tableofcontents" "telephone" "TeX" "textbf"
     "textfloatsep" "textfraction" "textheight" "textit" "textmd" "textnormal"
     "textrm" "textsc" "textsf" "textsl" "texttt" "textup" "textwidth"
     "thicklines" "thinlines" "thinspace" "thispagestyle" "tiny" "to" "today"
     "topfraction" "topmargin" "topsep" "topskip" "totalheight" "tt" "ttfamily"
     "twocolumn" "typein" "typeout" "u " "unboldmath"
-    "unitlength" "upshape" "usebox" "usecounter" "usefont" "usepackage" "v
-    " "value" "vector" "verb" "vert" "vfill" "vline" "vspace"
+    "unitlength" "upshape" "usebox" "usecounter" "usefont" "usepackage"
+    "value" "vector" "verb" "vert" "vfill" "vline" "vspace"
     "width" "year")
   "List of the latex commands.")
-
 
 (provide 'symbols)
