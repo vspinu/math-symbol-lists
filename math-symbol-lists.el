@@ -3028,7 +3028,7 @@
     "item" "itemindent" "itemsep" "itshape" "kill"
     "label" "labelenumi" "labelenumii" "labelenumiii" "labelenumiv"
     "labelitemi" "labelitemii" "labelitemiii" "labelitemiv" "labelsep"
-    "labelwidth" "land" "LARGE" "Large" "large" "LaTeX" "le" "leadsto"
+    "labelwidth" "land" "LARGE" "Large" "large" "LaTeX" "le" "left" "leadsto"
     "lefteqn" "leftmargin" "leftmargini" "leftmarginii" "leftmarginiii"
     "leftmarginiv" "leftmarginv" "leftmarginvi" "line" "linebreak"
     "linethickness" "linewidth" "listoffigures" "listoftables" "listparindent"
