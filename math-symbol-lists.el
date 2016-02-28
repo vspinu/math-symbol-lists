@@ -4,7 +4,7 @@
 ;; Author: Vitalie Spinu
 ;; URL: https://github.com/vspinu/math-symbol-lists
 ;; Keywords: Unicode, symbols, mathematics
-;; Version: 1.0
+;; Version: 1.1
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
