@@ -3559,7 +3559,17 @@ differently in unicode-math standard.")
     ("wrisym" "mathrel" "\\NestedGreaterGreater" 10914 "⪢")
     ("wrisym" "mathunder" "\\underparen" 9181 "⏝"))
   "Mathematical symbols from various LaTeX packages.
-Each element is of the form (package class command unicode
-symbol). Package 'literal' corresponds to core (La)TeX.")
+Each element is of the form
+
+  (package class command unicode symbol conflict)
+
+CONFLICT is a Boolean that indicates that this command conflicts
+or generates different symbol from math-unicode package. Thus the
+generated LaTeX symbol might be different from 5th
+element (symbol) in the list above. See LUCR reference [1] for
+more details. Package 'literal' corresponds to core (La)TeX.
+
+   [1] http://milde.users.sourceforge.net/LUCR/Math/
+")
 
 (provide 'math-symbol-lists)
