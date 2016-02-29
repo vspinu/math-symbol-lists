@@ -34,10 +34,10 @@
 ;;
 ;; Defined (a)lists are:
 ;;
-;;  math-symbol-list-basic
-;;  math-symbol-list-extended
-;;  math-symbol-list-packages
-;;  math-symbol-list-latex-commands
+;;  `math-symbol-list-basic`
+;;  `math-symbol-list-extended`
+;;  `math-symbol-list-packages`
+;;  `math-symbol-list-latex-commands`
 ;;
 ;; Sources:
 ;; 
