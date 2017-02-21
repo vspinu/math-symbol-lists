@@ -398,7 +398,7 @@
 This list maps standard LaTeX math commands to unicode
 characters. For some symbols in this list the unicode code is
 missing. It is an extension of `LaTeX-math-default' in
-AucTeX/latex.el but it doesn't include AMS symbols. See also
+AucTeX/latex.el, but it doesn't include AMS symbols. See also
 `math-symbol-list-extended' and `math-symbol-list-packages'.")
 
 (defconst math-symbol-list-extended
@@ -2832,9 +2832,9 @@ AucTeX/latex.el but it doesn't include AMS symbols. See also
     ("mathunder" "\\underbracket" 9141 "⎵")
     ("mathunder" "\\underparen" 9181 "⏝"))
   "Extended list of mathematical symbols.
-This list does not contain about 190 of the standard LaTeX math
-commands in `math-symbol-list-basic' because they are named
-differently in unicode-math standard.")
+This list does not include about 190 of the standard LaTeX math
+commands in `math-symbol-list-basic' because of the conflicting
+names between latex and unicode-math standard.")
 
 (defconst math-symbol-list-packages
   '(("amsfonts" "mathclose" "\\urcorner" 8989 "⌝")
