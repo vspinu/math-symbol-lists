@@ -113,3 +113,33 @@ command from alias field. "
 (msl--LUCR-to-msl tt t)
 ;; aliases
 (msl--LUCR-to-msl tt nil t)
+
+
+;; SUBSCRIPTS and SUPERSCRIPTS
+
+(defvar subscripts )
+(defvar superscripts "ⱽª²³¹ºʰʱʲʳʴʵʶʷʸˠˡˢˣᴬᴭᴮᴯᴰᴱᴲᴳᴴᴵᴶᴷᴸᴹᴺᴻᴼᴽᴾᴿᵀᵁᵂᵃᵄᵅᵆᵇᵈᵉᵊᵋᵌᵍᵎᵏᵐᵑᵒᵓᵔᵕᵖᵗᵘᵙᵚᵛᵜᵝᵞᵟᵠᵡᵸᶛᶜᶝᶞᶟᶠᶡᶢᶣᶤᶥᶦᶧᶨᶩᶪᶫᶬᶭᶮᶯᶰᶱᶲᶳᶴᶵᶶᶷᶸᶹᶺᶻᶼᶽᶾᶿ⁰ⁱ⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾ⁿ")
+
+;; taken from https://github.com/tpapp/company-unicode-subsuper/blob/master/company-unicode-subsuper.el
+(defconst unicode-name-table
+  '((?β . "beta")
+    (?γ . "gamma")
+    (?δ . "delta")
+    (?θ . "theta")
+    (?ɩ . "iota")
+    (?φ . "varphi")                     ; varphi instead of phi, as in LaTeX
+    (?χ . "chi")
+    (?ρ . "rho")
+    (?− . "-"))                         ; replace #x2212 with minus sign
+  "table for entering characters outside the ASCII range. Follows conventions of LaTeX for Greek letters, but without the \\ prefix.")
+
+(defun gen-scirpted-alist (char-str type prefix)
+  (mapcar (lambda (c)
+            (let* ((dec (cdr (get-char-code-property c 'decomposition)))
+                   (plain (or (cdr (assoc (car dec) unicode-name-table)) dec)))
+              (list type (concat prefix plain) c (char-to-string c))))
+          char-str))
+
+(gen-scirpted-alist "₀₁₂₃₄₅₆₇₈₉₊₋₌₍₎ₐₑₕᵢⱼₖₗₘₙₒₚᵣₛₜᵤᵥₓᵦᵧᵨᵩᵪ" "subscript" "_")
+(gen-scirpted-alist "⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻᴬᴮᴰᴱᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾᴿᵀᵁⱽᵂᵝᵞᵟᶿᶥᵠᵡ" "superscripts" "^")
+
