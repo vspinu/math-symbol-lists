@@ -393,7 +393,11 @@
     ("rel" "\\owns" 8715 "∋")
     ("rel" "\\ne" 8800 "≠")
     ("rel" "\\le" 8804 "≤")
-    ("rel" "\\ge" 8805 "≥"))
+    ("rel" "\\ge" 8805 "≥")
+    ;; manually added
+    ("misc" "\\P" 182 "¶")
+    ("misc" "\\textpilcrow" 182 "¶")
+    )
   "List of basic LaTeX mathematical symbols.
 This list maps standard LaTeX math commands to unicode
 characters. For some symbols in this list the unicode code is
