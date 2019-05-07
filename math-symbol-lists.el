@@ -37,6 +37,8 @@
 ;;  `math-symbol-list-extended`
 ;;  `math-symbol-list-packages`
 ;;  `math-symbol-list-latex-commands`
+;;  `math-symbol-list-subscripts`
+;;  `math-symbol-list-superscripts`
 ;;
 ;; Sources:
 ;;
@@ -395,13 +397,12 @@
     ("rel" "\\ge" 8805 "≥")
     ;; manually added
     ("misc" "\\P" 182 "¶")
-    ("misc" "\\textpilcrow" 182 "¶")
-    )
+    ("misc" "\\textpilcrow" 182 "¶"))
   "List of basic LaTeX mathematical symbols.
 This list maps standard LaTeX math commands to unicode
 characters.  For some symbols in this list the unicode code is
 missing.  It is an extension of `LaTeX-math-default' in
-AucTeX/latex.el, but it doesn't include AMS symbols.  See also
+AucTeX/latex.el, but it doesn't include AMS symbols. See also
 `math-symbol-list-extended' and `math-symbol-list-packages'.")
 
 (defconst math-symbol-list-extended
@@ -2834,15 +2835,14 @@ AucTeX/latex.el, but it doesn't include AMS symbols.  See also
     ("mathunder" "\\underbrace" 9183 "⏟")
     ("mathunder" "\\underbracket" 9141 "⎵")
     ("mathunder" "\\underparen" 9181 "⏝"))
-  ;; FIXME: Describe the expected shape of the contents (i.e. a list of
-  ;; 4-tuples, but I'm not sure what those 4 elements mean:
-  ;; - why is the first a string rather than a symbol?
-  ;; - What's the difference between the 3rd and the 4th (other than: one is
-  ;;   a char and the other is a single-char string)?
   "Extended list of mathematical symbols.
-This list does not include about 190 of the standard LaTeX math
-commands in `math-symbol-list-basic' because of the conflicting
-names between latex and unicode-math standard.")
+Each element is a list of the form (CLASS COMMAND UNICODE SYMBOL)
+where COMMAND is a latex command, UNICODE is the unicode entry
+point and SYMBOL is the Emacs with the actual unicode
+character. The last two are equivalent and provided for
+convenience. This list does not include about 190 of the standard
+LaTeX math commands in `math-symbol-list-basic' because of the
+conflicting names between latex and unicode-math standard.")
 
 (defconst math-symbol-list-packages
   '(("amsfonts" "mathclose" "\\urcorner" 8989 "⌝")
@@ -3572,11 +3572,11 @@ Each element is of the form
 
   (PACKAGE CLASS COMMAND UNICODE SYMBOL CONFLICT)
 
-CONFLICT is a Boolean that indicates that this command conflicts
-or generates different symbol from math-unicode package.  Thus the
-generated LaTeX symbol might be different from 5th
-element (symbol) in the list above.  See LUCR reference [1] for
-more details.  Package 'literal' corresponds to core (La)TeX.
+Optional CONFLICT is a Boolean that indicates that this command
+conflicts or generates different symbol from math-unicode
+package.  Thus the generated LaTeX symbol might be different from
+5th element (symbol) in the list above.  See LUCR reference [1]
+for more details.  Package 'literal' corresponds to core (La)TeX.
 
    [1] http://milde.users.sourceforge.net/LUCR/Math/")
 
@@ -3618,7 +3618,8 @@ more details.  Package 'literal' corresponds to core (La)TeX.
     ("subscript" "_rho" 7528 "ᵨ")
     ("subscript" "_varphi" 7529 "ᵩ")
     ("subscript" "_chi" 7530 "ᵪ"))
-  "List of unicode subscripts.")
+  "List of unicode subscripts.
+See `math-symbol-list-extended' for the meaning of the entries.")
 
 (defconst math-symbol-list-superscripts
   '(("superscripts" "^0" 8304 "⁰")
@@ -3687,7 +3688,8 @@ more details.  Package 'literal' corresponds to core (La)TeX.
     ("superscripts" "^iota" 7589 "ᶥ")
     ("superscripts" "^varphi" 7520 "ᵠ")
     ("superscripts" "^chi" 7521 "ᵡ"))
-  "List of unicode superscripts.")
+  "List of unicode superscripts.
+See `math-symbol-list-extended' for the meaning of each entry.")
 
 (provide 'math-symbol-lists)
 ;;; math-symbol-lists.el ends here
