@@ -1,10 +1,10 @@
 ;;; math-symbol-lists.el --- Lists of Unicode math symbols and latex commands
 ;;
-;; Copyright (C) 2014 Free Software Foundation, Inc.
+;; Copyright (C) 2014-2019 Free Software Foundation, Inc.
 ;; Author: Vitalie Spinu <spinuvit@gmail.com>
 ;; URL: https://github.com/vspinu/math-symbol-lists
 ;; Keywords: Unicode, symbols, mathematics
-;; Version: 1.2
+;; Version: 1.2.1
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -3686,7 +3686,4 @@ more details.  Package 'literal' corresponds to core (La)TeX.
   "List of unicode superscripts.")
 
 (provide 'math-symbol-lists)
-
-(provide 'math-symbol-lists)
-
 ;;; math-symbol-lists.el ends here
