@@ -1,6 +1,29 @@
-;; functions to build symbol lists
+;;; msl-build.el --- functions to build symbol lists  -*- lexical-binding:t -*-
 
-(require 'cl)
+;; Copyright (C) 2019 Free Software Foundation, Inc.
+
+;; Author: Vitalie Spinu <spinuvit@gmail.com>
+
+;; This program is free software; you can redistribute it and/or
+;; modify it under the terms of the GNU General Public License as
+;; published by the Free Software Foundation; either version 3, or
+;; (at your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;; General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;;
+
+;;; Code:
+
+(require 'cl-lib)
 
 ;; IMPORT UTILITIES
 ;; 
@@ -58,7 +81,7 @@
 If LATEX is non-nil, give package and latex command instead of
 unicode-math command. If ALIAS is non-nil give package and latex
 command from alias field. "
-  (flet ((code (el) (if no-parse (car el) (string-to-number (car el) 16))))
+  (cl-flet ((code (el) (if no-parse (car el) (string-to-number (car el) 16))))
     (let ((sl (delq nil
                     (cond
                      (latex (mapcan (lambda (el)
@@ -100,28 +123,27 @@ command from alias field. "
                     el))
                 list)))
 
-;; this is how you build those 
-(setq tt (msl--LUCR-read-file "./data/unimathsymbols.txt"))
+;; this is how you build those
+(defun msl--build-things ()
+  (let* ((tt (msl--LUCR-read-file "./data/unimathsymbols.txt"))
+         ;; extra aliases for basic symbols
+         (tt2 (msl--LUCR-filter-LaTeX-aliases tt)))
+    (msl--LUCR-to-msl tt2 nil t)
 
-;; extra aliases for basic symbols
-(setq tt2 (msl--LUCR-filter-LaTeX-aliases tt))
-(msl--LUCR-to-msl tt2 nil t)
-
-;; extended
-(msl--LUCR-to-msl tt)
-;; packages
-(msl--LUCR-to-msl tt t)
-;; aliases
-(msl--LUCR-to-msl tt nil t)
+    ;; extended
+    (msl--LUCR-to-msl tt)
+    ;; packages
+    (msl--LUCR-to-msl tt t)
+    ;; aliases
+    (msl--LUCR-to-msl tt nil t)))
 
 
 ;; SUBSCRIPTS and SUPERSCRIPTS
 
-(defvar subscripts )
-(defvar superscripts "ⱽª²³¹ºʰʱʲʳʴʵʶʷʸˠˡˢˣᴬᴭᴮᴯᴰᴱᴲᴳᴴᴵᴶᴷᴸᴹᴺᴻᴼᴽᴾᴿᵀᵁᵂᵃᵄᵅᵆᵇᵈᵉᵊᵋᵌᵍᵎᵏᵐᵑᵒᵓᵔᵕᵖᵗᵘᵙᵚᵛᵜᵝᵞᵟᵠᵡᵸᶛᶜᶝᶞᶟᶠᶡᶢᶣᶤᶥᶦᶧᶨᶩᶪᶫᶬᶭᶮᶯᶰᶱᶲᶳᶴᶵᶶᶷᶸᶹᶺᶻᶼᶽᶾᶿ⁰ⁱ⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾ⁿ")
+(defvar msl-superscripts "ⱽª²³¹ºʰʱʲʳʴʵʶʷʸˠˡˢˣᴬᴭᴮᴯᴰᴱᴲᴳᴴᴵᴶᴷᴸᴹᴺᴻᴼᴽᴾᴿᵀᵁᵂᵃᵄᵅᵆᵇᵈᵉᵊᵋᵌᵍᵎᵏᵐᵑᵒᵓᵔᵕᵖᵗᵘᵙᵚᵛᵜᵝᵞᵟᵠᵡᵸᶛᶜᶝᶞᶟᶠᶡᶢᶣᶤᶥᶦᶧᶨᶩᶪᶫᶬᶭᶮᶯᶰᶱᶲᶳᶴᶵᶶᶷᶸᶹᶺᶻᶼᶽᶾᶿ⁰ⁱ⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾ⁿ")
 
 ;; taken from https://github.com/tpapp/company-unicode-subsuper/blob/master/company-unicode-subsuper.el
-(defconst unicode-name-table
+(defconst msl-unicode-name-table
   '((?β . "beta")
     (?γ . "gamma")
     (?δ . "delta")
@@ -133,13 +155,14 @@ command from alias field. "
     (?− . "-"))                         ; replace #x2212 with minus sign
   "table for entering characters outside the ASCII range. Follows conventions of LaTeX for Greek letters, but without the \\ prefix.")
 
-(defun gen-scirpted-alist (char-str type prefix)
+(defun msl-gen-scripted-alist (char-str type prefix)
   (mapcar (lambda (c)
             (let* ((dec (cdr (get-char-code-property c 'decomposition)))
-                   (plain (or (cdr (assoc (car dec) unicode-name-table)) dec)))
+                   (plain (or (cdr (assoc (car dec) msl-unicode-name-table)) dec)))
               (list type (concat prefix plain) c (char-to-string c))))
           char-str))
 
-(gen-scirpted-alist "₀₁₂₃₄₅₆₇₈₉₊₋₌₍₎ₐₑₕᵢⱼₖₗₘₙₒₚᵣₛₜᵤᵥₓᵦᵧᵨᵩᵪ" "subscript" "_")
-(gen-scirpted-alist "⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻᴬᴮᴰᴱᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾᴿᵀᵁⱽᵂᵝᵞᵟᶿᶥᵠᵡ" "superscripts" "^")
+;; (msl-gen-scripted-alist "₀₁₂₃₄₅₆₇₈₉₊₋₌₍₎ₐₑₕᵢⱼₖₗₘₙₒₚᵣₛₜᵤᵥₓᵦᵧᵨᵩᵪ" "subscript" "_")
+;; (msl-gen-scripted-alist "⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻᴬᴮᴰᴱᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾᴿᵀᵁⱽᵂᵝᵞᵟᶿᶥᵠᵡ" "superscripts" "^")
 
+;;; msl-build.el ends here

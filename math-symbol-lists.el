@@ -1,4 +1,4 @@
-;;; math-symbol-lists.el --- Lists of Unicode math symbols and latex commands
+ ;;; math-symbol-lists.el --- Lists of Unicode math symbols and latex commands
 ;;
 ;; Copyright (C) 2014-2019 Free Software Foundation, Inc.
 ;; Author: Vitalie Spinu <spinuvit@gmail.com>
@@ -21,9 +21,7 @@
 ;; General Public License for more details.
 ;;
 ;; You should have received a copy of the GNU General Public License
-;; along with this program; see the file COPYING.  If not, write to
-;; the Free Software Foundation, Inc., 51 Franklin Street, Fifth
-;; Floor, Boston, MA 02110-1301, USA.
+;; along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -2835,6 +2833,11 @@ AucTeX/latex.el, but it doesn't include AMS symbols.  See also
     ("mathunder" "\\underbrace" 9183 "⏟")
     ("mathunder" "\\underbracket" 9141 "⎵")
     ("mathunder" "\\underparen" 9181 "⏝"))
+  ;; FIXME: Describe the expected shape of the contents (i.e. a list of
+  ;; 4-tuples, but I'm not sure what those 4 elements mean:
+  ;; - why is the first a string rather than a symbol?
+  ;; - What's the difference between the 3rd and the 4th (other than: one is
+  ;;   a char and the other is a single-char string)?
   "Extended list of mathematical symbols.
 This list does not include about 190 of the standard LaTeX math
 commands in `math-symbol-list-basic' because of the conflicting
@@ -3566,7 +3569,7 @@ names between latex and unicode-math standard.")
   "Mathematical symbols from various LaTeX packages.
 Each element is of the form
 
-  (package class command unicode symbol conflict)
+  (PACKAGE CLASS COMMAND UNICODE SYMBOL CONFLICT)
 
 CONFLICT is a Boolean that indicates that this command conflicts
 or generates different symbol from math-unicode package.  Thus the
