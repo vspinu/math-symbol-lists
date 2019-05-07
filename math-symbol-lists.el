@@ -1,9 +1,10 @@
- ;;; math-symbol-lists.el --- Lists of Unicode math symbols and latex commands
+ ;;; math-symbol-lists.el --- Lists of Unicode math symbols and latex commands -*- lexical-binding:t -*-
 ;;
 ;; Copyright (C) 2014-2019 Free Software Foundation, Inc.
 ;; Author: Vitalie Spinu <spinuvit@gmail.com>
 ;; URL: https://github.com/vspinu/math-symbol-lists
 ;; Keywords: Unicode, symbols, mathematics
+;; Package-Type: simple
 ;; Version: 1.2.1
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
