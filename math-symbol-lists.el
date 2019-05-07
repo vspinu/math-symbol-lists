@@ -1,7 +1,7 @@
 ;;; math-symbol-lists.el --- Lists of Unicode math symbols and latex commands
 ;;
 ;; Copyright (C) 2014 Free Software Foundation, Inc.
-;; Author: Vitalie Spinu
+;; Author: Vitalie Spinu <spinuvit@gmail.com>
 ;; URL: https://github.com/vspinu/math-symbol-lists
 ;; Keywords: Unicode, symbols, mathematics
 ;; Version: 1.2
@@ -40,7 +40,7 @@
 ;;  `math-symbol-list-latex-commands`
 ;;
 ;; Sources:
-;; 
+;;
 ;;  [1] http://milde.users.sourceforge.net/LUCR/Math/
 ;;  [2] https://github.com/wspr/unicode-math/blob/master/unicode-math-table.tex
 ;;  [3] http://milde.users.sourceforge.net/LUCR/Math/data/unimathsymbols.txt
@@ -48,7 +48,7 @@
 ;;  [5] `LaTeX-math-default' in AucTeX package
 ;;  [6] LaTeX 2 unicode: https://www.cl.cam.ac.uk/%7Emgk25/ucs/examples/TeX.txt
 ;;  [7] W3C math WG: https://www.w3.org/2003/entities/2007xml/unicode.xml
-;; 
+;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Code:
@@ -73,7 +73,7 @@
     "flushbottom" "fnsymbol" "fontencoding" "fontfamily" "fontseries"
     "fontshape" "fontsize" "footnote" "footnotemark" "footnoterule"
     "footnotesep" "footnotesize" "footnotetext" "footskip" "frame" "framebox"
-    "fussy" "gets" "glossary" "glossaryentry" 
+    "fussy" "gets" "glossary" "glossaryentry"
     "headheight" "headsep" "height" "hfill" "hline" "hrulefill" "hspace"
     "Huge" "huge" "hyphenation" "iff" "include" "includeonly"
     "indent" "index" "indexentry" "input" "intextsep"
@@ -115,7 +115,7 @@
     "width" "year")
   "List of the latex commands.")
 
-(defconst math-symbol-list-basic 
+(defconst math-symbol-list-basic
   '(("accent"	"\\acute"	#X301)
     ("accent"	"\\bar"	#X304)
     ("accent"	"\\breve"	#X306)
@@ -400,9 +400,9 @@
     )
   "List of basic LaTeX mathematical symbols.
 This list maps standard LaTeX math commands to unicode
-characters. For some symbols in this list the unicode code is
-missing. It is an extension of `LaTeX-math-default' in
-AucTeX/latex.el, but it doesn't include AMS symbols. See also
+characters.  For some symbols in this list the unicode code is
+missing.  It is an extension of `LaTeX-math-default' in
+AucTeX/latex.el, but it doesn't include AMS symbols.  See also
 `math-symbol-list-extended' and `math-symbol-list-packages'.")
 
 (defconst math-symbol-list-extended
@@ -3569,13 +3569,12 @@ Each element is of the form
   (package class command unicode symbol conflict)
 
 CONFLICT is a Boolean that indicates that this command conflicts
-or generates different symbol from math-unicode package. Thus the
+or generates different symbol from math-unicode package.  Thus the
 generated LaTeX symbol might be different from 5th
-element (symbol) in the list above. See LUCR reference [1] for
-more details. Package 'literal' corresponds to core (La)TeX.
+element (symbol) in the list above.  See LUCR reference [1] for
+more details.  Package 'literal' corresponds to core (La)TeX.
 
-   [1] http://milde.users.sourceforge.net/LUCR/Math/
-")
+   [1] http://milde.users.sourceforge.net/LUCR/Math/")
 
 (defconst math-symbol-list-subscripts
   '(("subscript" "_0" 8320 "₀")
@@ -3687,3 +3686,7 @@ more details. Package 'literal' corresponds to core (La)TeX.
   "List of unicode superscripts.")
 
 (provide 'math-symbol-lists)
+
+(provide 'math-symbol-lists)
+
+;;; math-symbol-lists.el ends here
