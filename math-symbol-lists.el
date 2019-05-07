@@ -2835,6 +2835,11 @@ AucTeX/latex.el, but it doesn't include AMS symbols. See also
     ("mathunder" "\\underbrace" 9183 "⏟")
     ("mathunder" "\\underbracket" 9141 "⎵")
     ("mathunder" "\\underparen" 9181 "⏝"))
+  ;; FIXME: Describe the expected shape of the contents (i.e. a list of
+  ;; 4-tuples, but I'm not sure what those 4 elements mean:
+  ;; - why is the first a string rather than a symbol?
+  ;; - What's the difference between the 3rd and the 4th (other than: one is
+  ;;   a char and the other is a single-char string)?
   "Extended list of mathematical symbols.
 Each element is a list of the form (CLASS COMMAND UNICODE SYMBOL)
 where COMMAND is a latex command, UNICODE is the unicode entry
