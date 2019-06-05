@@ -1,4 +1,4 @@
- ;;; math-symbol-lists.el --- Lists of Unicode math symbols and latex commands -*- lexical-binding:t -*-
+;;; math-symbol-lists.el --- Lists of Unicode math symbols and latex commands -*- lexical-binding:t -*-
 ;;
 ;; Copyright (C) 2014-2019 Free Software Foundation, Inc.
 ;; Author: Vitalie Spinu <spinuvit@gmail.com>
