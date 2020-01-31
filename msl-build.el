@@ -101,9 +101,14 @@ command from alias field. "
                                                              (split-string (cdr pkg) " +"))))
                                               (nth 7 el)))
                                     lucr))
-                     (t (mapcar (lambda (el)
-                                  (and (string-match-p "\\\\" (nth 3 el))
-                                       (list (nth 5 el) (nth 3 el) (code el) (nth 1 el))))
+                     (t (mapcan (lambda (el)
+                                  (list
+                                   (and (string-match-p "\\\\" (nth 3 el))
+                                        (list (nth 5 el) (nth 3 el) (code el) (nth 1 el)))
+                                   (and (not (string= (nth 2 el) (nth 3 el)))
+                                        (string-match-p "\\\\" (nth 2 el))
+                                        (msl--no-{}-p (nth 2 el))
+                                        (list (nth 5 el) (nth 2 el) (code el) (nth 1 el)))))
                                 lucr))))))
       (when (or latex alias)
         (setq sl (mapcar (lambda (el)
@@ -124,18 +129,17 @@ command from alias field. "
                 list)))
 
 ;; this is how you build those
-(defun msl--build-things ()
-  (let* ((tt (msl--LUCR-read-file "./data/unimathsymbols.txt"))
-         ;; extra aliases for basic symbols
-         (tt2 (msl--LUCR-filter-LaTeX-aliases tt)))
-    (msl--LUCR-to-msl tt2 nil t)
+(defun msl--build-things (type)
+  (let* ((lucr (msl--LUCR-read-file "./data/unimathsymbols.txt")))
+    (cl-case type
+      ('latex (let (((lucr (msl--LUCR-filter-LaTeX-aliases lucr))))
+                (msl--LUCR-to-msl lucr nil t)))
+      ('extended (msl--LUCR-to-msl lucr))
+      ('packages (msl--LUCR-to-msl lucr t))
+      ('aliases (msl--LUCR-to-msl lucr nil t))
+      (t (error "Invalid 'type' argument")))))
 
-    ;; extended
-    (msl--LUCR-to-msl tt)
-    ;; packages
-    (msl--LUCR-to-msl tt t)
-    ;; aliases
-    (msl--LUCR-to-msl tt nil t)))
+;; (msl--build-things 'extended)
 
 
 ;; SUBSCRIPTS and SUPERSCRIPTS
@@ -166,3 +170,5 @@ command from alias field. "
 ;; (msl-gen-scripted-alist "⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻᴬᴮᴰᴱᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾᴿᵀᵁⱽᵂᵝᵞᵟᶿᶥᵠᵡ" "superscripts" "^")
 
 ;;; msl-build.el ends here
+
+
